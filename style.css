@@ -1,33 +1,70 @@
+/* Import Font  */
 @font-face {
-    font-family: Orbitron;
-    src: url('https://fonts.googleapis.com/css?family=Orbitron');
+    font-family: 'Scientific Calculator LCD';
+    src: url('http://fonts.cdnfonts.com/css/scientific-calculator-lcd');
+}
+/* Import Font */
+
+/* Typing animation on the title */
+/* h1 {
+    overflow: hidden;
+    border-right: .15em solid yellowgreen;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 1s forwards;
+}
+
+.headerContainer {
+    display: inline-block;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+} */
+  
+
+/* Typing animation on the title */
+
+body {
+    background-color: black;
 }
 
 h1 {
     text-align: center;
     font-weight: bold;
+    font-family: 'Scientific Calculator LCD', Times, serif;
+    color: greenyellow;
+    font-style: italic;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
 }
 
 .calculatorContainer {
-    background-color: lightblue;
+    background-color: gray;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 32px;
+
+    padding: 8px;
 }
 
 .display {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
+    justify-content: flex-start;
+    background-color: black;
     padding: 12px;
     margin: auto;
-    color: black;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: greenyellow;
+    font-family: 'Scientific Calculator LCD', Times, serif;
     font-weight: bold;
     font-size: 32px;
 }
@@ -39,3 +76,15 @@ h1 {
     flex-direction: column;
     margin-left: 8px;
 }
+
+button {
+    background-color: rgb(32, 30, 30);
+    color: green;
+    border: solid grenyellow;
+    border-radius: 15px;
+    font-family: 'Scientific Calculator LCD', Times, serif;
+    font-weight: 900;
+    font-style: italic;
+    padding: 32px;
+}
+

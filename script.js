@@ -86,84 +86,80 @@ const addButton = document.querySelector('#add');
 const clearButton = document.querySelector('#clear');
 
 // create an array that we will push the number on the display/clicked into
-let displayArray = [];
+let numberArray = [];
 
-// create a variable that will save the FIRST number that we get before adding operations
-let firstNumber;
-
-// create a variable that will save the SECOND number that we get before adding operations
-let secondNumber;
-
+// create an array that will save only TWO numbers, which will be the numbers that will be operated on
+let arithmeticArray = [];
 
 // array that will save the operator from the button we click on
 let operator = [];
 
 // create the event listeners for each and every separate button
 sevenButton.addEventListener('click', () => {
-    displayArray.push(7);
+    numberArray.push(7);
 
     const seven = document.createElement('div');
     seven.textContent = '7';
     display.appendChild(seven);
 });
 eightButton.addEventListener('click', () => {
-    displayArray.push(8);
+    numberArray.push(8);
 
     const eight = document.createElement('div');
     eight.textContent = '8';
     display.appendChild(eight);
 });
 nineButton.addEventListener('click', () => {
-    displayArray.push(9);
+    numberArray.push(9);
 
     const nine = document.createElement('div');
     nine.textContent = '9';
     display.appendChild(nine);
 });
 fourButton.addEventListener('click', () => {
-    displayArray.push(4);
+    numberArray.push(4);
 
     const four = document.createElement('div');
     four.textContent = '4';
     display.appendChild(four);
 });
 fiveButton.addEventListener('click', () => {
-    displayArray.push(5);
+    numberArray.push(5);
 
     const five = document.createElement('div');
     five.textContent = '5';
     display.appendChild(five);
 });
 sixButton.addEventListener('click', () => {
-    displayArray.push(6);
+    numberArray.push(6);
 
     const six = document.createElement('div');
     six.textContent = '6';
     display.appendChild(six);
 });
 oneButton.addEventListener('click', () => {
-    displayArray.push(1);
+    numberArray.push(1);
 
     const one = document.createElement('div');
     one.textContent = '1';
     display.appendChild(one);
 });
 twoButton.addEventListener('click', () => {
-    displayArray.push(2);
+    numberArray.push(2);
 
     const two = document.createElement('div');
     two.textContent = '2';
     display.appendChild(two);
 });
 threeButton.addEventListener('click', () => {
-    displayArray.push(3);
+    numberArray.push(3);
 
     const three = document.createElement('div');
     three.textContent = '3';
     display.appendChild(three);
 });
 zeroButton.addEventListener('click', () => {
-    displayArray.push(0);
+    numberArray.push(0);
 
     const zero = document.createElement('div');
     zero.textContent = '0';
@@ -171,41 +167,45 @@ zeroButton.addEventListener('click', () => {
 });
 equalsButton.addEventListener('click', () => {
 
-    secondNumber = parseInt(displayArray.join(''));
-    if (typeof(displayArray[0]) === Number && typeof(displayArray[1]) === 'undefined') {
-        displayArray.textContent = displayArray[0];
+    arithmeticArray.push(parseInt(numberArray.join('')));
+    if (typeof(numberArray[0]) === Number && typeof(numberArray[1]) === 'undefined') {
+        numberArray.textContent = numberArray[0];
     }
     else {
         const solution = operate(operator[0], firstNumber, secondNumber);
         display.textContent = solution;
 
-        displayArray.push(solution);
-        displayArray.pop();
-        displayArray.pop();
+        numberArray.push(solution);
+        numberArray.pop();
+        numberArray.pop();
     }
     
 });
 multiplyButton.addEventListener('click', () => {
+    if (typeof(firstNumber) === Number && typeof(secondNumber) === Number) {
+        solution = operate("+", firstNumber, secondNumber);
+        display.textContent = solution;
+    }
     operator.pop();
     operator.push("*");
-    firstNumber = Number(displayArray.join(''));
-    displayArray = []
+    firstNumber = Number(numberArray.join(''));
+    numberArray = []
 });
 divideButton.addEventListener('click', () => {
     operator.pop();
     operator.push("/");
-    firstNumber = Number(displayArray.join(''));
-    displayArray = [];
+    firstNumber = Number(numberArray.join(''));
+    numberArray = [];
 });
 subtractButton.addEventListener('click', () => {
     operator.pop();
     operator.push("-");
-    firstNumber = Number(displayArray.join(''));
-    displayArray = [];
+    firstNumber = Number(numberArray.join(''));
+    numberArray = [];
 });
 addButton.addEventListener('click', () => {
     operator.pop();
     operator.push("+");
-    firstNumber = Number(displayArray.join(''));
-    displayArray = [];
+    firstNumber = Number(numberArray.join(''));
+    numberArray = [];
 });
