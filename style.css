@@ -1,5 +1,34 @@
+@font-face {
+    font-family: Orbitron;
+    src: url('https://fonts.googleapis.com/css?family=Orbitron');
+}
+
 h1 {
     text-align: center;
     font-weight: bold;
+}
+
+.calculatorContainer {
+    background-color: lightblue;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+}
+
+.display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    padding: 12px;
+    margin: auto;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 32px;
 }
 
