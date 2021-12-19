@@ -50,6 +50,20 @@ function operate(operator, a, b) {
 // in each event listener complete on a click
 // when the button is clicked, push that number into the array and push the number into the display on the html using DOM
 
+// equals button pseudocode>>>
+// save the respective sign into a variable
+// call the operate() function on the two numbers left in the Array and save to a varible
+// push that number to the display
+// push the number onto the Array, pop() the last number
+
+
+// addition, divide, subtraction, multiply buttons pseudocode >>>>>
+// when these buttons are clicked, join() the numbers in the current array into a single number
+// save it back into the array
+// set an operator variable to a string of the symbol to be used in the equals button click
+// create a separate side css flex container in the display to show the operations with faded font... append this result to that with animation
+// set .textContent to these logos, push to the side div as i said
+
 // create constant for display
 const display = document.querySelector('.display');
 
@@ -73,6 +87,16 @@ const clearButton = document.querySelector('#clear');
 
 // create an array that we will push the number on the display/clicked into
 let displayArray = [];
+
+// create a variable that will save the FIRST number that we get before adding operations
+let firstNumber;
+
+// create a variable that will save the SECOND number that we get before adding operations
+let secondNumber;
+
+
+// array that will save the operator from the button we click on
+let operator = [];
 
 // create the event listeners for each and every separate button
 sevenButton.addEventListener('click', () => {
@@ -146,9 +170,42 @@ zeroButton.addEventListener('click', () => {
     display.appendChild(zero);
 });
 equalsButton.addEventListener('click', () => {
-    displayArray.push();
 
-    const equals = document.createElement('div');
-    seven.textContent = '=';
-    display.appendChild(equals);
+    secondNumber = parseInt(displayArray.join(''));
+    if (typeof(displayArray[0]) === Number && typeof(displayArray[1]) === 'undefined') {
+        displayArray.textContent = displayArray[0];
+    }
+    else {
+        const solution = operate(operator[0], firstNumber, secondNumber);
+        display.textContent = solution;
+
+        displayArray.push(solution);
+        displayArray.pop();
+        displayArray.pop();
+    }
+    
+});
+multiplyButton.addEventListener('click', () => {
+    operator.pop();
+    operator.push("*");
+    firstNumber = Number(displayArray.join(''));
+    displayArray = []
+});
+divideButton.addEventListener('click', () => {
+    operator.pop();
+    operator.push("/");
+    firstNumber = Number(displayArray.join(''));
+    displayArray = [];
+});
+subtractButton.addEventListener('click', () => {
+    operator.pop();
+    operator.push("-");
+    firstNumber = Number(displayArray.join(''));
+    displayArray = [];
+});
+addButton.addEventListener('click', () => {
+    operator.pop();
+    operator.push("+");
+    firstNumber = Number(displayArray.join(''));
+    displayArray = [];
 });

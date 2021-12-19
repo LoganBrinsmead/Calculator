@@ -32,3 +32,10 @@ h1 {
     font-size: 32px;
 }
 
+.sideDisplay {
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-left: 8px;
+}
