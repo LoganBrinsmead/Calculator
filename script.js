@@ -39,33 +39,12 @@ function operate(operator, a, b) {
     }
 }
 
-// create the functions that populates the display when you click the number buttons
-// store the "display value" in a variable somewhere for use in the next step
 
-// pseudocode>>>
-// create a const queryselector for the display
-// create queryselector consts for each button
-// create an array that we will push() each clicked number into
-// create the event listeners for each and every separate button
-// in each event listener complete on a click
-// when the button is clicked, push that number into the array and push the number into the display on the html using DOM
-
-// equals button pseudocode>>>
-// save the respective sign into a variable
-// call the operate() function on the two numbers left in the Array and save to a varible
-// push that number to the display
-// push the number onto the Array, pop() the last number
-
-
-// addition, divide, subtraction, multiply buttons pseudocode >>>>>
-// when these buttons are clicked, join() the numbers in the current array into a single number
-// save it back into the array
-// set an operator variable to a string of the symbol to be used in the equals button click
-// create a separate side css flex container in the display to show the operations with faded font... append this result to that with animation
-// set .textContent to these logos, push to the side div as i said
-
-// create constant for display
+// create constants for display
 const display = document.querySelector('.display');
+const sideDisplay = document.querySelector('.sideDisplay');
+const topDisplay = document.querySelector('.topDisplay');
+
 
 // create constants for each button
 const sevenButton = document.querySelector('#seven');
@@ -92,7 +71,10 @@ let numberArray = [];
 let arithmeticArray = [];
 
 // array that will save the operator from the button we click on
-let operator = [];
+let operator;
+
+// variable to hold the solution
+let solution;
 
 // create the event listeners for each and every separate button
 sevenButton.addEventListener('click', () => {
@@ -167,45 +149,91 @@ zeroButton.addEventListener('click', () => {
 });
 equalsButton.addEventListener('click', () => {
 
-    arithmeticArray.push(parseInt(numberArray.join('')));
-    if (typeof(numberArray[0]) === Number && typeof(numberArray[1]) === 'undefined') {
-        numberArray.textContent = numberArray[0];
+    arithmeticArray.push(Number(numberArray.join('')));
+    if (typeof(numberArray[0]) === Number && typeof(numberArray[1]) === undefined) {
+        display.textContent = arithmeticArray[0];
+    } else if (solution === undefined) {
+        solution = operate(operator, arithmeticArray[0], arithmeticArray[1])
+        display.textContent = solution;
+        arithmeticArray = [];
     }
-    else {
-        const solution = operate(operator[0], firstNumber, secondNumber);
+    else if (solution !== undefined) {
+        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
         display.textContent = solution;
 
-        numberArray.push(solution);
-        numberArray.pop();
-        numberArray.pop();
+        arithmeticArray = [];
     }
-    
+    numberArray = [];
+
 });
 multiplyButton.addEventListener('click', () => {
-    if (typeof(firstNumber) === Number && typeof(secondNumber) === Number) {
-        solution = operate("+", firstNumber, secondNumber);
+    display.textContent = '';
+    if(numberArray[0] !== 0) arithmeticArray.push(Number(numberArray.join('')));
+
+    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined) {
+        solution = operate(operator, arithmeticArray[0], arithmeticArray[1]);
+    } else if (solution !== undefined && numberArray[0] !== undefined) {
+        solution = operate(operator, solution, arithmeticArray[0]);
         display.textContent = solution;
-    }
-    operator.pop();
-    operator.push("*");
-    firstNumber = Number(numberArray.join(''));
-    numberArray = []
+        arithmeticArray = [];
+    } 
+    numberArray = [];
+    operator = '*';
+
 });
 divideButton.addEventListener('click', () => {
-    operator.pop();
-    operator.push("/");
-    firstNumber = Number(numberArray.join(''));
+    display.textContent = '';
+    if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
+
+    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
+        solution = operate(operator, arithmeticArray[0], arithmeticArray[1]);
+    } else if (solution !== undefined) {
+        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
+        display.textContent = solution;
+        arithmeticArray = [];
+    } 
     numberArray = [];
+    operator = '/';
 });
 subtractButton.addEventListener('click', () => {
-    operator.pop();
-    operator.push("-");
-    firstNumber = Number(numberArray.join(''));
+    display.textContent = '';
+    if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
+
+    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
+        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
+    } else if (solution !== undefined) {
+        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
+        display.textContent = solution;
+        arithmeticArray = [];
+    } 
     numberArray = [];
+    operator = '-';
 });
 addButton.addEventListener('click', () => {
-    operator.pop();
-    operator.push("+");
-    firstNumber = Number(numberArray.join(''));
+    display.textContent = '';
+    if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
+
+    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
+        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
+    } else if (solution !== undefined) {
+        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
+        display.textContent = solution;
+        arithmeticArray = [];
+    } 
     numberArray = [];
+    operator = '+';
+
 });
+
+////// a button to help me debug my calculator on the fly. Will remove this when I'm Done!!!
+const debug = document.querySelector('#debug');
+
+debug.addEventListener('click', () => {
+    console.log('*************************');
+    console.log('Solution: ' + solution);
+    console.log('number array: ' + numberArray);
+    console.log('arithmeticArray: ' + arithmeticArray);
+    console.log('operator: ' + operator);
+    console.log('type of numberArray[0]: ' + typeof(numberArray[0]));
+});
+////////////////////////////////////////////
