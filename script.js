@@ -24,6 +24,37 @@ function divide(a , b) {
     return a / b;
 }
 
+// function for the actual calculations and populating the display
+function calculator(operator) {
+    display.textContent = '';
+    if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
+
+    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
+        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
+    } else if (solution !== undefined && arithmeticArray[arithmeticArray.length-1] !== 0) {
+        // operator = '/'
+        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
+        // topDisplay.textContent = +solution + operator;
+        arithmeticArray = [];
+    } 
+    numberArray = [];
+    // operator = '/';
+    decimalButton.disabled = 'false';
+
+
+    if(arithmeticArray[0] !== undefined && arithmeticArray[1] === undefined && solution === undefined) {
+        topDisplay.textContent = +arithmeticArray[0] + operator;
+    } else if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined) {
+        topDisplay.textContent = +arithmeticArray[0] + +arithmeticArray[1] + operator; 
+    }
+
+
+    // else if (arithmeticArray === undefined && solution !== undefined) {
+    //     topDisplay.textContent = solution + operator;
+    // }
+}
+
+
 // this function takes an operator and two numbers and then calls one of the previous functions
 function operate(operator, a, b) {
     // create an if... else tree that calls one of the above functions on a and b depending on what operation sign is inputted
@@ -150,6 +181,16 @@ zeroButton.addEventListener('click', () => {
 });
 equalsButton.addEventListener('click', () => {
 
+    ////////////////////////////////////////////    ////////////////////////////////////////////
+    if(arithmeticArray[0] !== undefined && arithmeticArray[1] === undefined && solution === undefined) {
+        topDisplay.textContent = +arithmeticArray[0] + operator;
+    } else if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined) {
+        topDisplay.textContent = +arithmeticArray[0] + +arithmeticArray[1] + operator; 
+    }
+    ////////////////////////////////////////////
+
+
+    display.textContent = '0';
     arithmeticArray.push(Number(numberArray.join('')));
     if (typeof(numberArray[0]) === Number && typeof(numberArray[1]) === undefined) {
         display.textContent = arithmeticArray[0];
@@ -160,7 +201,7 @@ equalsButton.addEventListener('click', () => {
     }
     else if (solution !== undefined) {
         solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
-        display.textContent = solution;
+        // topDisplay.textContent = solution;
 
         arithmeticArray = [];
     }
@@ -168,68 +209,20 @@ equalsButton.addEventListener('click', () => {
     decimalButton.disabled = 'false';
 });
 multiplyButton.addEventListener('click', () => {
-    display.textContent = '';
-    if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
-
-    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
-        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
-    } else if (solution !== undefined && arithmeticArray[arithmeticArray.length-1] !== 0) {
-        operator = '/'
-        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
-        display.textContent = solution;
-        arithmeticArray = [];
-    } 
-    numberArray = [];
     operator = '*';
-    decimalButton.disabled = 'false';
+    calculator(operator);
 });
 divideButton.addEventListener('click', () => {
-    display.textContent = '';
-    if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
-
-    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
-        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
-    } else if (solution !== undefined && arithmeticArray[arithmeticArray.length-1] !== 0) {
-        operator = '/'
-        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
-        display.textContent = solution;
-        arithmeticArray = [];
-    } 
-    numberArray = [];
     operator = '/';
-    decimalButton.disabled = 'false';
+    calculator(operator);
 });
 subtractButton.addEventListener('click', () => {
-    display.textContent = '';
-    if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
-
-    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
-        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
-    } else if (solution !== undefined && arithmeticArray[arithmeticArray.length-1] !== 0) {
-        operator = '/'
-        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
-        display.textContent = solution;
-        arithmeticArray = [];
-    } 
-    numberArray = [];
     operator = '-';
-    decimalButton.disabled = 'false';
+    calculator(operator);
 });
 addButton.addEventListener('click', () => {
-    display.textContent = '';
-    if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
-
-    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
-        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
-    } else if (solution !== undefined && arithmeticArray[arithmeticArray.length-1] !== 0) {
-        operator = '/'
-        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
-        display.textContent = solution;
-        arithmeticArray = [];
-    } 
-    numberArray = [];
     operator = '+';
-    decimalButton.disabled = 'false';
+    calculator(operator);
 });
 clearButton.addEventListener('click', () => {
     display.textContent = '';
@@ -237,6 +230,7 @@ clearButton.addEventListener('click', () => {
     numberArray = [];
     solution = undefined;
     operator = '';
+    topDisplay.textContent = '';
     decimalButton.disabled = 'false';
 });
 backspaceButton.addEventListener('click', () => {
@@ -248,6 +242,11 @@ decimalButton.addEventListener('click', () => {
     decimalButton.disabled = 'true';
 });
 
+if (solution === undefined && numberArray !== undefined) {
+    display.textContent = numberArray;
+} else if (solution !== undefined && numberArray === undefined) {
+    display.textContent = solution;
+}
 
 ////// a button to help me debug my calculator on the fly. Will remove this when I'm Done!!!
 const debug = document.querySelector('#debug');
@@ -263,5 +262,6 @@ debug.addEventListener('click', () => {
     console.log('value of arithmeticArray.length-1: ' + arithmeticArray[arithmeticArray.length-1]);
 });
 ////////////////////////////////////////////
+
 
 

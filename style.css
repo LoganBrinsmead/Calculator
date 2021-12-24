@@ -78,7 +78,9 @@ h1 {
     justify-content: center;
     align-items: center;
 
-    padding: 8px;
+    padding: 28px;
+    border: solid #FF5F1F;
+    border-radius: 15px;
 }
 
 .display {
@@ -86,31 +88,37 @@ h1 {
     font-family: 'Scientific Calculator LCD', Times, serif;
     background-color: black;
     font-weight: bold;
-    text-align: right;
 
-    /* flex-direction: row; */
-    /* gap: 30px;
-    flex-wrap: wrap; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    
+    align-items: flex-end;
     padding: 150px;
-    width: 150px;
+    width: 300px;
+    height: 200px;
     font-size: 32px;
     padding: 32px;
-    margin: 39px;
-    direction: ltr;
+    margin: 32px;
+    flex: 0 1 100%;
 
     border: solid rgb(73, 251, 53);
     border-radius: 15px;
-    /* flex: 0 0 100px; */
 
 }
 
-.topDisplay {   
-    direction: inherit;
+.topDisplay {  
+    display: flex; 
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 
 .mainDisplay {
-    direction: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    
+    
 }
 
 .buttons {
@@ -129,8 +137,12 @@ button {
     padding: auto;
 }
 
-.right button {
-    color: orange;
+.operation {
+    color: #FF3131;
+}
+
+.function {
+    color: #FF5F1F;
 }
 
 footer {
