@@ -41,8 +41,7 @@ function operate(operator, a, b) {
 
 
 // create constants for display
-const display = document.querySelector('.display');
-const sideDisplay = document.querySelector('.sideDisplay');
+const display = document.querySelector('.mainDisplay');
 const topDisplay = document.querySelector('.topDisplay');
 
 
@@ -63,6 +62,8 @@ const divideButton = document.querySelector('#divide');
 const subtractButton = document.querySelector('#subtract');
 const addButton = document.querySelector('#add');
 const clearButton = document.querySelector('#clear');
+const backspaceButton = document.querySelector('#backspace');
+const decimalButton = document.querySelector('#decimal');
 
 // create an array that we will push the number on the display/clicked into
 let numberArray = [];
@@ -164,36 +165,39 @@ equalsButton.addEventListener('click', () => {
         arithmeticArray = [];
     }
     numberArray = [];
-
+    decimalButton.disabled = 'false';
 });
 multiplyButton.addEventListener('click', () => {
     display.textContent = '';
-    if(numberArray[0] !== 0) arithmeticArray.push(Number(numberArray.join('')));
+    if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
 
-    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined) {
-        solution = operate(operator, arithmeticArray[0], arithmeticArray[1]);
-    } else if (solution !== undefined && numberArray[0] !== undefined) {
-        solution = operate(operator, solution, arithmeticArray[0]);
+    if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
+        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
+    } else if (solution !== undefined && arithmeticArray[arithmeticArray.length-1] !== 0) {
+        operator = '/'
+        solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
         display.textContent = solution;
         arithmeticArray = [];
     } 
     numberArray = [];
     operator = '*';
-
+    decimalButton.disabled = 'false';
 });
 divideButton.addEventListener('click', () => {
     display.textContent = '';
     if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
 
     if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
-        solution = operate(operator, arithmeticArray[0], arithmeticArray[1]);
-    } else if (solution !== undefined) {
+        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
+    } else if (solution !== undefined && arithmeticArray[arithmeticArray.length-1] !== 0) {
+        operator = '/'
         solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
         display.textContent = solution;
         arithmeticArray = [];
     } 
     numberArray = [];
     operator = '/';
+    decimalButton.disabled = 'false';
 });
 subtractButton.addEventListener('click', () => {
     display.textContent = '';
@@ -201,13 +205,15 @@ subtractButton.addEventListener('click', () => {
 
     if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
         solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
-    } else if (solution !== undefined) {
+    } else if (solution !== undefined && arithmeticArray[arithmeticArray.length-1] !== 0) {
+        operator = '/'
         solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
         display.textContent = solution;
         arithmeticArray = [];
     } 
     numberArray = [];
     operator = '-';
+    decimalButton.disabled = 'false';
 });
 addButton.addEventListener('click', () => {
     display.textContent = '';
@@ -215,15 +221,33 @@ addButton.addEventListener('click', () => {
 
     if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
         solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
-    } else if (solution !== undefined) {
+    } else if (solution !== undefined && arithmeticArray[arithmeticArray.length-1] !== 0) {
+        operator = '/'
         solution = operate(operator, solution, arithmeticArray[arithmeticArray.length-1]);
         display.textContent = solution;
         arithmeticArray = [];
     } 
     numberArray = [];
     operator = '+';
-
+    decimalButton.disabled = 'false';
 });
+clearButton.addEventListener('click', () => {
+    display.textContent = '';
+    arithmeticArray = [];
+    numberArray = [];
+    solution = undefined;
+    operator = '';
+    decimalButton.disabled = 'false';
+});
+backspaceButton.addEventListener('click', () => {
+    numberArray.pop();
+    display.textContent = numberArray;
+});
+decimalButton.addEventListener('click', () => {
+    numberArray.push('.');
+    decimalButton.disabled = 'true';
+});
+
 
 ////// a button to help me debug my calculator on the fly. Will remove this when I'm Done!!!
 const debug = document.querySelector('#debug');
@@ -235,5 +259,9 @@ debug.addEventListener('click', () => {
     console.log('arithmeticArray: ' + arithmeticArray);
     console.log('operator: ' + operator);
     console.log('type of numberArray[0]: ' + typeof(numberArray[0]));
+    console.log('Type of arithmeticArray.length-1: ' + typeof(arithmeticArray.length-1));
+    console.log('value of arithmeticArray.length-1: ' + arithmeticArray[arithmeticArray.length-1]);
 });
 ////////////////////////////////////////////
+
+

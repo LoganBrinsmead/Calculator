@@ -1,51 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Logan's Calculator!</title>
+        <title>Calculator</title>
         <meta charset="utf-8">
         <script src="script.js" defer></script>
         <link rel="stylesheet" href="style.css">
         <link href="http://fonts.cdnfonts.com/css/scientific-calculator-lcd" rel="stylesheet">
     </head>
     <body>
-        <div class="headerContainer">
-            <h1>The Cyber Calculator</h1>
-        </div>
+        <h1>The Cyber Calculator</h1>
         <div class="container">
             <div class="calculatorContainer">
                 <div class="display">
                     <div class="topDisplay"></div>
                     <div class="mainDisplay"></div>
-                    <div class="sideDisplay"></div>
                 </div>
                 <div class="buttons">
-                    <div class="left">
-                        <button id="seven">7</button>
-                        <button id="eight">8</button>
-                        <button id="nine">9</button>
-                    </div>
-                    <div class="centerLeft">
-                        <button id="four">4</button>
-                        <button id="five">5</button>
-                        <button id="six">6</button>
-                    </div>
-                    <div class="centerRight">
-                        <button id="one">1</button>
-                        <button id="two">2</button>
-                        <button id="three">3</button>
-                    </div>
-                    <div class="right">
-                        <button id="zero">0</button>
-                        <button id="equals">=</button>
-                        <button id="multiply">X</button>
-                        <button id="divide">/</button>
-                        <button id="subtract">-</button>
-                        <button id="add">+</button>
-                        <button id="clear">CLEAR</button>
-                        <button id="debug">DEBUG</button>
-                    </div>
+                    <button id="seven">7</button>
+                    <button id="eight">8</button>
+                    <button id="nine">9</button>
+                    <button id="multiply" class="operation">X</button>
+
+                    <button id="four">4</button>
+                    <button id="five">5</button>
+                    <button id="six">6</button>
+                    <button id="subtract" class="operation">-</button>
+
+                    <button id="one">1</button>
+                    <button id="two">2</button>
+                    <button id="three">3</button>
+                    <button id="divide" class="operation">/</button>
+                    <button id="zero">0</button>
+                    <button id="decimal">.</button>
+                    <button id="equals">=</button>
+                    <button id="add">+</button>
+
+
+                    <button id="clear">AC</button>
+                    <button id="debug">DEBUG</button>
+                    <button id="backspace">C</button>
                 </div>
             </div>
         </div>
+        <footer>Made by Logan Brinsmead, Inspired by The Odin Project <a href="https://github.com/LoganBrinsmead"><img src="images/GitHubLogo.png" alt="The Github Logo and a Link to Github."></footer>
     </body>
 </html>
