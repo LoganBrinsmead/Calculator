@@ -228,3 +228,23 @@ debug.addEventListener('click', () => {
 });
 ////////////////////////////////////////////
 
+
+// add keyboard compatibility
+document.addEventListener('keydown', function(event) { 
+    if (event.code === 'Numpad1' || event.code === 'Digit1')  {oneButton.click(); console.log('hello');};   
+    if (event.code === 'Numpad2' || event.code === 'Digit2')  {twoButton.click();};   
+    if (event.code === 'Numpad3' || event.code === 'Digit3')  {threeButton.click();};   
+    if (event.code === 'Numpad4' || event.code === 'Digit4')  {fourButton.click();};   
+    if (event.code === 'Numpad5' || event.code === 'Digit5')  {fiveButton.click();};   
+    if (event.code === 'Numpad6' || event.code === 'Digit6')  {sixButton.click();};   
+    if (event.code === 'Numpad7' || event.code === 'Digit7')  {sevenButton.click();};   
+    if (event.code === 'Numpad8' || event.code === 'Digit8')  {eightButton.click();};   
+    if (event.code === 'Numpad9' || event.code === 'Digit9')  {nineButton.click();};   
+    if (event.code === 'Numpad0' || event.code === 'Digit0')  {zeroButton.click();};   
+    if (event.code === 'NumpadDecimal' || event.code === 'Period')  {decimalButton.click();};   
+    if (event.code === 'NumpadAdd')  {addButton.click();};   
+    if (event.code === 'NumpadSubtract')  {subtractButton.click();};   
+    if (event.code === 'NumpadMultiply')  {multiplyButton.click();};   
+    if (event.code === 'NumpadDivide')  {divideButton.click();};   
+    if (event.code === 'Equal' || event.code === 'NumpadEnter')  {equalsButton.click();};     
+});
