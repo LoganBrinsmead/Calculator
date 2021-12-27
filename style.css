@@ -46,7 +46,10 @@ button {
     box-shadow: 0 9px #999;
   }
   
-button:hover {border: solid rgb(73, 251, 53)}
+button:hover {
+    border: 4px solid rgb(73, 251, 53);
+    margin: 0px;
+}
 
 button:active {
     background-color: #3e8e41;
@@ -71,7 +74,7 @@ h1 {
 }
 
 .calculatorContainer {
-    background-color: gray;
+    background-color: slategray;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -81,6 +84,9 @@ h1 {
     padding: 28px;
     border: solid #FF5F1F;
     border-radius: 15px;
+
+    box-shadow: 10px 5px 5px rgb(101, 150, 95);
+    padding: 24px;
 }
 
 .display {
@@ -88,19 +94,17 @@ h1 {
     font-family: 'Scientific Calculator LCD', Times, serif;
     background-color: black;
     font-weight: bold;
+    flex-direction: column;
 
     display: flex;
-    flex-wrap: wrap;
+    flex-grow: 0;
     gap: 24px;
     
-    align-items: flex-end;
-    padding: 150px;
+    padding: 50px 75px;
     width: 300px;
     height: 200px;
-    font-size: 32px;
-    padding: 32px;
+    font-size: 24px;
     margin: 32px;
-    flex: 0 1 100%;
 
     border: solid rgb(73, 251, 53);
     border-radius: 15px;
@@ -109,16 +113,24 @@ h1 {
 
 .topDisplay {  
     display: flex; 
+    overflow: auto;
     flex-wrap: wrap;
-    width: 100%;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    padding: 24px;
 }
 
 
 .mainDisplay {
     display: flex;
+    overflow: auto;
     flex-wrap: wrap;
-    
-    
+
+    justify-content: flex-end;
+    align-content: flex-end;
+
+    padding: 24px;
 }
 
 .buttons {
@@ -134,7 +146,7 @@ button {
     font-family: 'Scientific Calculator LCD', Times, serif;
     font-weight: 900;
     font-style: italic;
-    padding: auto;
+    margin: 3px;
 }
 
 .operation {
@@ -145,15 +157,9 @@ button {
     color: #FF5F1F;
 }
 
-footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+a {
     color: rgb(73, 251, 53);
+    margin-top: 12px;
     font-weight: bold;
     font-style: italic;
-    background-color: grey;
-    text-align: center;
-    padding: 32px;
 }
