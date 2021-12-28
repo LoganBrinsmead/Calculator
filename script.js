@@ -46,6 +46,7 @@ function populateDisplay(ans, array, sign) {
 // function for the actual calculations and populating the display
 function calculator(operator) {
     if(numberArray[0] !== 0) {arithmeticArray.push(Number(numberArray.join('')))};
+
     
     decimalButton.disabled=false;
     if (arithmeticArray[0] !== undefined && arithmeticArray[1] !== undefined && solution === undefined) {
@@ -116,42 +117,62 @@ let solution;
 
 // create the event listeners for each and every separate button
 sevenButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(7);
     bottomDisplay.textContent = numberArray.join('');
 });
 eightButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(8);
     bottomDisplay.textContent = numberArray.join('');
 });
 nineButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(9);
     bottomDisplay.textContent = numberArray.join('');
 });
 fourButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(4);
     bottomDisplay.textContent = numberArray.join('');
 });
 fiveButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(5);
     bottomDisplay.textContent = numberArray.join('');
 });
 sixButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(6);
     bottomDisplay.textContent = numberArray.join('');
 });
 oneButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(1);
     bottomDisplay.textContent = numberArray.join('');
 });
 twoButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(2);
     bottomDisplay.textContent = numberArray.join('');
 });
 threeButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(3);
     bottomDisplay.textContent = numberArray.join('');
 });
 zeroButton.addEventListener('click', () => {
+    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
+    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(0);
     bottomDisplay.textContent = numberArray.join('');
 });
@@ -242,9 +263,11 @@ document.addEventListener('keydown', function(event) {
     if (event.code === 'Numpad9' || event.code === 'Digit9')  {nineButton.click();};   
     if (event.code === 'Numpad0' || event.code === 'Digit0')  {zeroButton.click();};   
     if (event.code === 'NumpadDecimal' || event.code === 'Period')  {decimalButton.click();};   
-    if (event.code === 'NumpadAdd')  {addButton.click();};   
-    if (event.code === 'NumpadSubtract')  {subtractButton.click();};   
+    if (event.code === 'NumpadAdd' || event.code === 'Equal')  {addButton.click();};   
+    if (event.code === 'NumpadSubtract' || event.code === 'Minus')  {subtractButton.click();};   
     if (event.code === 'NumpadMultiply')  {multiplyButton.click();};   
     if (event.code === 'NumpadDivide')  {divideButton.click();};   
-    if (event.code === 'Equal' || event.code === 'NumpadEnter')  {equalsButton.click();};     
+    if (event.code === 'Enter' || event.code === 'NumpadEnter')  {equalsButton.click();};
+    if (event.code === 'Backspace') {backspaceButton.click();};
+
 });
