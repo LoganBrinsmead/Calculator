@@ -56,7 +56,9 @@ function calculator(operator) {
         topDisplay.textContent = +solution + operator;
         bottomDisplay.textContent = '';
         arithmeticArray = [];
-    } 
+    } else if(solution !== undefined && numberArray !== undefined && arithmeticArray === undefined) {
+        solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
+    }
     numberArray = [];
 }
 
@@ -117,62 +119,42 @@ let solution;
 
 // create the event listeners for each and every separate button
 sevenButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(7);
     bottomDisplay.textContent = numberArray.join('');
 });
 eightButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(8);
     bottomDisplay.textContent = numberArray.join('');
 });
 nineButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(9);
     bottomDisplay.textContent = numberArray.join('');
 });
 fourButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(4);
     bottomDisplay.textContent = numberArray.join('');
 });
 fiveButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(5);
     bottomDisplay.textContent = numberArray.join('');
 });
 sixButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(6);
     bottomDisplay.textContent = numberArray.join('');
 });
 oneButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(1);
     bottomDisplay.textContent = numberArray.join('');
 });
 twoButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(2);
     bottomDisplay.textContent = numberArray.join('');
 });
 threeButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(3);
     bottomDisplay.textContent = numberArray.join('');
 });
 zeroButton.addEventListener('click', () => {
-    // if the user starts typing another number after the solution has already been found, then clear the solution so they can start a new expression
-    if (arithmeticArray[0] === undefined && solution !== undefined) {solution = undefined};
     numberArray.push(0);
     bottomDisplay.textContent = numberArray.join('');
 });
@@ -235,18 +217,18 @@ decimalButton.addEventListener('click', () => {
 
 
 ////// a button to help me debug my calculator on the fly. Will remove this when I'm Done!!!
-// const debug = document.querySelector('#debug');
+const debug = document.querySelector('#debug');
 
-// debug.addEventListener('click', () => {
-//     console.log('*************************');
-//     console.log('Solution: ' + solution);
-//     console.log('number array: ' + numberArray);
-//     console.log('arithmeticArray: ' + arithmeticArray);
-//     console.log('operator: ' + operator);
-//     console.log('type of numberArray[0]: ' + typeof(numberArray[0]));
-//     console.log('Type of arithmeticArray.length-1: ' + typeof(arithmeticArray.length-1));
-//     console.log('value of arithmeticArray.length-1: ' + arithmeticArray[arithmeticArray.length-1]);
-// });
+debug.addEventListener('click', () => {
+    console.log('*************************');
+    console.log('Solution: ' + solution);
+    console.log('number array: ' + numberArray);
+    console.log('arithmeticArray: ' + arithmeticArray);
+    console.log('operator: ' + operator);
+    console.log('type of numberArray[0]: ' + typeof(numberArray[0]));
+    console.log('Type of arithmeticArray.length-1: ' + typeof(arithmeticArray.length-1));
+    console.log('value of arithmeticArray.length-1: ' + arithmeticArray[arithmeticArray.length-1]);
+});
 ////////////////////////////////////////////
 
 
