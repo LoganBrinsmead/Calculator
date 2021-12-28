@@ -60,6 +60,7 @@ function calculator(operator) {
         solution = operate(operator, arithmeticArray[1], arithmeticArray[0]);
     }
     numberArray = [];
+    operator = '';
 }
 
 
@@ -234,7 +235,7 @@ decimalButton.addEventListener('click', () => {
 
 // add keyboard compatibility
 document.addEventListener('keydown', function(event) { 
-    if (event.code === 'Numpad1' || event.code === 'Digit1')  {oneButton.click(); console.log('hello');};   
+    if (event.code === 'Numpad1' || event.code === 'Digit1')  {oneButton.click();};   
     if (event.code === 'Numpad2' || event.code === 'Digit2')  {twoButton.click();};   
     if (event.code === 'Numpad3' || event.code === 'Digit3')  {threeButton.click();};   
     if (event.code === 'Numpad4' || event.code === 'Digit4')  {fourButton.click();};   
