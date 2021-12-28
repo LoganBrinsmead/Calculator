@@ -217,18 +217,18 @@ decimalButton.addEventListener('click', () => {
 
 
 ////// a button to help me debug my calculator on the fly. Will remove this when I'm Done!!!
-const debug = document.querySelector('#debug');
+// const debug = document.querySelector('#debug');
 
-debug.addEventListener('click', () => {
-    console.log('*************************');
-    console.log('Solution: ' + solution);
-    console.log('number array: ' + numberArray);
-    console.log('arithmeticArray: ' + arithmeticArray);
-    console.log('operator: ' + operator);
-    console.log('type of numberArray[0]: ' + typeof(numberArray[0]));
-    console.log('Type of arithmeticArray.length-1: ' + typeof(arithmeticArray.length-1));
-    console.log('value of arithmeticArray.length-1: ' + arithmeticArray[arithmeticArray.length-1]);
-});
+// debug.addEventListener('click', () => {
+//     console.log('*************************');
+//     console.log('Solution: ' + solution);
+//     console.log('number array: ' + numberArray);
+//     console.log('arithmeticArray: ' + arithmeticArray);
+//     console.log('operator: ' + operator);
+//     console.log('type of numberArray[0]: ' + typeof(numberArray[0]));
+//     console.log('Type of arithmeticArray.length-1: ' + typeof(arithmeticArray.length-1));
+//     console.log('value of arithmeticArray.length-1: ' + arithmeticArray[arithmeticArray.length-1]);
+// });
 ////////////////////////////////////////////
 
 
